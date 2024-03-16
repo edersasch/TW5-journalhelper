@@ -1,0 +1,16 @@
+title: test_syncselectabledate
+description: journaldate differs from created, created gets updated
+tags: $:/tags/wiki-test-spec
+type: text/vnd.tiddlywiki-multiple
+
+title: Output
+created: 20240318180528584
+journaldate: 2024-02-19
+
+<<syncselectabledate>>
+<$view field="created" format="date" template="[UTC]YYYY/0MM/0DD hh:0mm:0ss"/>
+
++
+title: ExpectedResult
+
+2024/02/19 18:05:28

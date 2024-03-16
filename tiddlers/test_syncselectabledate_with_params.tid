@@ -1,0 +1,16 @@
+title: test_syncselectabledate_with_params
+description: testdate differs from testcreated, testcreated gets updated
+tags: $:/tags/wiki-test-spec
+type: text/vnd.tiddlywiki-multiple
+
+title: Output
+testcreated: 20240301180528584
+testdate: 2020-01-31
+
+<<syncselectabledate datefield:testcreated selectabledatefield:testdate>>
+<$view field="testcreated" format="date" template="[UTC]YYYY/0MM/0DD hh:0mm:0ss"/>
+
++
+title: ExpectedResult
+
+2020/01/31 18:05:28

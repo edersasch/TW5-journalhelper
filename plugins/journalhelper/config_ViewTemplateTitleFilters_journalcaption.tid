@@ -1,0 +1,5 @@
+list-before: $:/config/ViewTemplateTitleFilters/default
+tags: $:/tags/ViewTemplateTitleFilter
+title: $:/plugins/edersasch/journalhelper/config/ViewTemplateTitleFilters/journalcaption
+
+[<currentTiddler>tag[Journal]has[caption]then[$:/plugins/edersasch/journalhelper/ui/ViewTemplate/title/journalcaption]]

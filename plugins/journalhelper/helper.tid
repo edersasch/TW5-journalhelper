@@ -1,0 +1,26 @@
+title: $:/plugins/edersasch/journalhelper/helper
+
+<style>
+.inputyear {width: 4em;text-align: center;}
+.inputmonthday {width: 3em; text-align: center;}
+</style>
+
+<$reveal type="nomatch" state="$:/plugins/abraham/edit-text-plus" text="">
+<$edit-text-plus tiddler="$:/temp/journalfilter" field="Filter Year" placeholder="----" type="number" min="0" max="2099" class="inputyear" />
+/
+<$edit-text-plus tiddler="$:/temp/journalfilter" field="Filter Month" placeholder="--" type="number" min="0" max="12" class="inputmonthday" />
+/
+<$edit-text-plus tiddler="$:/temp/journalfilter" field="Filter Day" placeholder="--" type="number" min="0" max="31" class="inputmonthday" />
+</$reveal>
+
+<$reveal type="match" state="$:/plugins/abraham/edit-text-plus" text="">
+<$edit-text tiddler="$:/temp/journalfilter" field="Filter Year" placeholder="----" type="number" class="inputyear" />
+/
+<$edit-text tiddler="$:/temp/journalfilter" field="Filter Month" placeholder="--" type="number" class="inputmonthday" />
+/
+<$edit-text tiddler="$:/temp/journalfilter" field="Filter Day" placeholder="--" type="number" class="inputmonthday" />
+</$reveal>
+
+<$set name="dontcare" filter="[tag[Journal]!has[draft.of]] [{$:/temp/journalfilter!!Filter Year}] [{$:/temp/journalfilter!!Filter Month}] [{$:/temp/journalfilter!!Filter Day}] [{$:/temp/journalfilter!!Filter Title Content}]">
+<<journalfilter>>
+</$set>

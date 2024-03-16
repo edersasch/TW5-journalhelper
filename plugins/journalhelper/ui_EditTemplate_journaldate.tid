@@ -1,0 +1,10 @@
+list-after: $:/plugins/edersasch/journalhelper/ui/EditTemplate/journalcaption
+tags: $:/tags/EditTemplate
+title: $:/plugins/edersasch/journalhelper/ui/EditTemplate/journaldate
+
+<$list filter="[<currentTiddler>tag[Journal]]">
+<<syncselectabledate>>
+<div class="tc-edit-tags">
+<$edit-text field="journaldate" type="date" />
+</div>
+</$list>

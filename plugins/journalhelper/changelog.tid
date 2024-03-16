@@ -1,0 +1,23 @@
+title: $:/plugins/edersasch/journalhelper/changelog
+
+All notable changes to this plugin and its accompanying info will be
+documented here.
+
+The format is based on
+[[Keep a Changelog|https://keepachangelog.com/en/1.1.0/]].
+The versioning scheme is<br>
+`yyyy.[releasenumber].[qualityindex]`
+e.g. "2024.1.Beta1" means that this is the first Beta for the first
+release in the year 2024.
+
+
+! 2024.1.Beta1 - released 2024-03-22
+
+
+!! Added
+
+* Transcludeable tiddler with overview of all journal tiddlers filterable by date
+* Add caption to edit template and use present caption in overview and view template (sidebar continues to use title)
+* Setup tiddler to access relevant configuration options
+* [[Demo page|https://pivotal-stereo-34.tiddlyhost.com]]
+* [[Source code repository|https://github.com/edersasch/TW5-journalhelper]]

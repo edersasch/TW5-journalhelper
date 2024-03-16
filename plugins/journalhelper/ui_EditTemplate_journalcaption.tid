@@ -1,0 +1,9 @@
+list-after: $:/core/ui/EditTemplate/title
+tags: $:/tags/EditTemplate
+title: $:/plugins/edersasch/journalhelper/ui/EditTemplate/journalcaption
+
+<$list filter="[<currentTiddler>tag[Journal]]">
+<div class="tc-edit-tags">
+<$edit-text field="caption" class="tc-titlebar tc-edit-texteditor" focus={{{ [{$:/config/AutoFocus}match[caption]then[true]] ~[[false]] }}} />
+</div>
+</$list>

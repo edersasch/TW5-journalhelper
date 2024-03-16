@@ -1,0 +1,8 @@
+list-before: $:/core/ui/ViewTemplate/title
+tags: $:/tags/ViewTemplate
+title: $:/plugins/edersasch/journalhelper/ui/ViewTemplate/journalcreated
+
+<$list filter="[<currentTiddler>tag[Journal]]">
+<<syncselectabledate>>
+<$view field="created" format="date" template="DDD, DDth MMM YYYY" />
+</$list>

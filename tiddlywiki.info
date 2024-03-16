@@ -1,0 +1,32 @@
+{
+    "plugins": [
+        "tiddlywiki/tiddlyweb",
+        "tiddlywiki/filesystem"
+    ],
+
+    "themes": [
+        "tiddlywiki/vanilla",
+        "tiddlywiki/snowwhite"
+    ],
+
+    "build": {
+        "index": [
+            "--rendertiddler",
+            "$:/core/save/all",
+            "index.html","text/plain"
+        ],
+        "test": [
+            "--rendertiddler",
+            "$:/core/save/all",
+            "test.html","text/plain",
+            "--test"
+        ],
+        "license": [
+            "--render",
+            "$:/plugins/edersasch/journalhelper/license",
+            "LICENSE",
+            "text/plain",
+            "$:/core/templates/plain-text-tiddler"
+        ]
+    }
+}
