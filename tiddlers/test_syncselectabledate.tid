@@ -1,4 +1,4 @@
-title: test_syncselectabledate
+title: test/syncselectabledate
 description: journaldate differs from created, created gets updated
 tags: $:/tags/wiki-test-spec
 type: text/vnd.tiddlywiki-multiple

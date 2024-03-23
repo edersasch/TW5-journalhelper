@@ -1,4 +1,4 @@
-title: test_syncselectabledate_with_params
+title: test/syncselectabledate/with_params
 description: testdate differs from testcreated, testcreated gets updated
 tags: $:/tags/wiki-test-spec
 type: text/vnd.tiddlywiki-multiple

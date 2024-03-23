@@ -10,15 +10,20 @@
     ],
 
     "build": {
+        "serve": [
+            "--listen"
+        ],
         "index": [
-            "--rendertiddler",
+            "--render",
             "$:/core/save/all",
-            "index.html","text/plain"
+            "index.html",
+            "text/plain"
         ],
         "test": [
-            "--rendertiddler",
+            "--render",
             "$:/core/save/all",
-            "test.html","text/plain",
+            "test.html",
+            "text/plain",
             "--test"
         ],
         "license": [

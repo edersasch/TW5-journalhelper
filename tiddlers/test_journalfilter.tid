@@ -1,4 +1,4 @@
-title: test_journalfilter
+title: test/journalfilter
 description: journal date filter fields, overview of journal tiddlers
 tags: $:/tags/wiki-test-spec
 type: text/vnd.tiddlywiki-multiple
