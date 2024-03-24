@@ -9,7 +9,9 @@ a date for an `edit-text type="date"` format YYYY-MM-DD
 This macro does not return any text, but modifies tiddler fields, which means
 you must
 [[take care where to call it|https://tiddlywiki.com/dev/#JavaScript%20Macros]].
-The examples below work.
+There should be little danger of an infinite update cycle, because the fields are
+not blindly updated every time, but only on change.
+The examples below don't cause problems.
 
 * parameter tiddler: use the fields from the tiddler with the given title, default is currentTiddler
 * parameter datefield: a field with a format like a [[tiddlywiki date field|https://tiddlywiki.com/#Date%20Fields]], default is created

@@ -2,60 +2,79 @@ title: $:/plugins/edersasch/journalhelper/setup
 
 <$list filter="[[$:/plugins/edersasch/journalhelper/setup]is[shadow]]" emptyMessage="Please install the plugin to access its setup.">
 
-! Setup
+To get the overview and filter add the transclusion to a tiddler:<br>
+`{{$:/plugins/edersasch/journalhelper/helper}}`
 
-Please transclude the tiddler
+<$list filter="[[$:/plugins/abraham/edit-text-plus/readme]!is[shadow]]">
 
-[[$:/plugins/edersasch/journalhelper/helper]]
-
-to get the date filter and the overview of all tiddlers tagged with "Journal":
-
-```
-{{$:/plugins/edersasch/journalhelper/helper}}
-```
-
-By default the filters accept any number, even negative ones. As long as
-TiddlyWiki [[issue 4230|https://github.com/Jermolene/TiddlyWiki5/issues/4230]]
-is open, you can install
+The date filter inputs accept any number, because attributes min and max
+[[are not supported|https://github.com/Jermolene/TiddlyWiki5/issues/4230]].
+By installing
 [[edit-text-plus|https://abesamma.github.io/edit-text-plus/#%24%3A%2Fplugins%2Fabraham%2Fedit-text-plus]]
-to only allow numbers useful for dates.
+only numbers useful for dates are accepted.
 
-<$reveal type="match" state="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-journal" text="show">
-<$checkbox filter="[[yes]]" checked="yes" disabled="yes"> The "New Journal" Button is enabled.</$checkbox>
-</$reveal>
-<$reveal type="nomatch" state="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-journal" text="show">
-For easy creation of journal tiddlers you should enable the "New Journal" button:
-<$button setTitle="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-journal" setTo="show">
-Enable "New Journal" Button
+</$list>
+
+<$button>
+Apply all suggested settings
+<$action-setfield $tiddler="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-journal" $field="text" $value="show" />
+<$action-setfield $tiddler="$:/config/AutoFocus" $field="text" $value="caption" />
+<$action-setfield $tiddler="$:/config/EditTemplateFields/Visibility/caption" $field="text" $value="hide" />
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/options/sidebarlayout" field="text" $value="fluid-fixed" />
 </$button>
-</$reveal>
 
-The tiddler title must be unique, that's why you can't have multiple titles
-like "Visited George", even on different dates. This plugin adds a line edit
-to fill the "caption" field, which does not have this limitation. The overview
-from [[helper tiddler|$:/plugins/edersasch/journalhelper/helper]] and the
-tiddler view use the caption if present. In the sidebar you still see the real
-title.
+<$checkbox tiddler="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-journal" field="text" checked="show" unchecked="hide" default="show" class="button">
+Show "New Journal" button
+{{$:/core/images/new-journal-button|1.2em}}
+for easy creation of journal tiddlers
+</$checkbox>
 
-<$reveal type="match" state="$:/config/AutoFocus" text="caption">
-<$checkbox filter="[[yes]]" checked="yes" disabled="yes"> Edit focus is set to "caption".</$checkbox>
-</$reveal>
+<$checkbox tiddler="$:/config/AutoFocus" field="text" checked="caption" unchecked="title" default="title">
+Set "Edit Focus" to "caption"
+</$checkbox>
 <$reveal type="nomatch" state="$:/config/AutoFocus" text="caption">
-To prevent changing the title accidentaly you can set Edit Focus to
-"caption":
-<$button setTitle="$:/config/AutoFocus" setTo="caption">
-Set Edit Focus to "caption"
+(currently: {{$:/config/AutoFocus}})
+</$reveal>
+<$button popup="$:/temp/journalhelper/setup/hint/editcaption" class="tc-btn-invisible">
+{{$:/core/images/help}}
 </$button>
+<$reveal type="popup" state="$:/temp/journalhelper/setup/hint/editcaption">
+<div class="tc-drop-down">
+<p>
+Prevents accitential edits of the tiddler title
+</p>
+<p>
+The tiddler title must be unique, that's why you can't have multiple titles
+like "Visited George", even on different dates.<br>
+This plugin adds a line edit for the "caption" field, which does not have this limitation.<br>
+The journal overview and the tiddler view use the caption if present.
+In the sidebar you still see the real title.<br>
+To prevent changing the title accidentally you can set the edit focus to "caption".
+</p>
+<p>
+Please note that this setting applies to all tiddlers, not just those tagged with "Journal".
+</p>
+</div>
 </$reveal>
 
+<$checkbox tiddler="$:/config/EditTemplateFields/Visibility/caption" field="text" checked="hide" unchecked="show" default="show">
+Hide default caption field editor
+</$checkbox>
+<$button popup="$:/temp/journalhelper/setup/hint/hidedefaultcaptioneditor" class="tc-btn-invisible">
+{{$:/core/images/help}}
+</$button>
+<$reveal type="popup" state="$:/temp/journalhelper/setup/hint/hidedefaultcaptioneditor">
+<div class="tc-drop-down">
+<p>
 If you don't use the "caption" field for anything else you can disable its
-default field editor:
+default field editor.<br>
+Please note that this setting applies to all tiddlers, not just those tagged with "Journal".
+</p>
+</div>
+</$reveal>
 
-<$checkbox filter="[[$:/config/EditTemplateFields/Visibility/caption]field:text[hide]then[hide]]" checked="hide" checkactions="""<$action-setfield $tiddler="$:/config/EditTemplateFields/Visibility/caption" text="hide"/>""" uncheckactions="""<$action-deletetiddler $tiddler="$:/config/EditTemplateFields/Visibility/caption"/>"""> hide default caption field editor</$checkbox>
+<$checkbox tiddler="$:/themes/tiddlywiki/vanilla/options/sidebarlayout" field="text" checked="fluid-fixed" unchecked="fixed-fluid" default="fixed-fluid">
+Shrink the sidebar
+</$checkbox>
 
-Below the caption line edit you have a date selector defaulting to the
-tiddler's created date allowing to e.g. create entries for past days if you
-need to catch up. The selection gets stored in a hidden field "journaldate"
-with the format "YYYY-MM-DD", because this is what the date selector expects.
-It is synchrnonized with the date field "created" of the tiddler.
 </$list>
