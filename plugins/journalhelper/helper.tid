@@ -19,7 +19,8 @@ title: $:/plugins/edersasch/journalhelper/helper
 <$edit-text tiddler="$:/temp/journalfilter" field="Filter Month" placeholder="--" type="number" class="inputmonthday" />
 /
 <$edit-text tiddler="$:/temp/journalfilter" field="Filter Day" placeholder="--" type="number" class="inputmonthday" />
-<$edit-text tiddler="$:/temp/journalfilter" field="Filter Dayname" placeholder="" class="inputmonthday" />
+<$edit-text tiddler="$:/temp/journalfilter" field="Filter Dayname" class="inputmonthday" />
+<$edit-text tiddler="$:/temp/journalfilter" field="Filter Title Content" />
 </$reveal>
 
 <$set name="dontcare" filter="[tag[Journal]!has[draft.of]] [{$:/temp/journalfilter!!Filter Year}] [{$:/temp/journalfilter!!Filter Month}] [{$:/temp/journalfilter!!Filter Day}] [{$:/temp/journalfilter!!Filter Dayname}] [{$:/temp/journalfilter!!Filter Title Content}]">

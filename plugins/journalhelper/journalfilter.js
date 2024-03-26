@@ -10,10 +10,11 @@ Show a list of journal tiddlers that match a set of filter fields
 * parameter filter_month_field: name of the field to look for month filter number, default is `Filter Month`
 * parameter filter_day_field: name of the field to look for day filter number, default is `Filter Day`
 * parameter filter_dayname_field: name of the field to look for short name of weekday filter string, default is `Filter Dayname`
-* parameter filter_title_content_field: unused, default is `Filter Title Content`
+* parameter filter_title_content_field: title / caption or content must contain the text, default is `Filter Title Content`
 
 Every set filter field must match the corresponding part of the field `created`
-of every non draft tiddler tagged with `Journal`.
+of every non draft tiddler tagged with `Journal` or in case of filter_title_content_field
+the title / caption or content.
 
 A `Journal` tiddler not having a `created` field will be shown.
 
@@ -47,12 +48,14 @@ exports.run = function(tmp, filter_year_field, filter_month_field, filter_day_fi
     let filter_month = "";
     let filter_day = "";
     let filter_dayname = "";
+    let filter_title_content = "";
     const tmptid = this.wiki.getTiddler(tmp);
     if (tmptid) {
         filter_year = tmptid.getFieldString(filter_year_field);
         filter_month = tmptid.getFieldString(filter_month_field);
         filter_day = tmptid.getFieldString(filter_day_field);
         filter_dayname = tmptid.getFieldString(filter_dayname_field);
+        filter_title_content = tmptid.getFieldString(filter_title_content_field);
     }
     const matching_list_filter = "[tag[Journal]!has[draft.of]]";
     const journal_tiddlers = this.wiki.filterTiddlers(matching_list_filter);
@@ -72,6 +75,8 @@ exports.run = function(tmp, filter_year_field, filter_month_field, filter_day_fi
              *         hide if a month or day filter is present and does not match
              *         else
              *             hide if a dayname filter is present and does not match
+             *             else
+             *                 hide if title_content filter is present and does not match
              */
             if (match === false) {
                 const jyear = created.substring(0, 4);
@@ -95,6 +100,11 @@ exports.run = function(tmp, filter_year_field, filter_month_field, filter_day_fi
                     if (dayname.length === 1) {
                         match = match && dayname[0].toLowerCase().includes(filter_dayname.toLowerCase());
                     }
+                }
+                if (match && filter_title_content !== "") {
+                    const title_content_filter = "[[" + journal_tiddlers[i] + "]search:title,caption,text[" + filter_title_content + "]]";
+                    const title_content = this.wiki.filterTiddlers(title_content_filter);
+                    match = title_content.length === 1;
                 }
             }
             if (match) {
