@@ -3,8 +3,12 @@ title: $:/plugins/edersasch/journalhelper/helper
 <style>
 .inputyear {width: 4em;text-align: center;}
 .inputmonthday {width: 3em; text-align: center;}
+.inputrestofline {width: 100%;}
+.divfloatleft {float: left;}
+.divfitlargeinput {overflow: hidden; padding-left: 0.2em}
 </style>
 
+<div class="divfloatleft">
 <$reveal type="nomatch" state="$:/plugins/abraham/edit-text-plus" text="">
 <$edit-text-plus tiddler="$:/temp/journalfilter" field="Filter Year" placeholder="----" type="number" min="0" max="2099" class="inputyear" />
 /
@@ -12,16 +16,18 @@ title: $:/plugins/edersasch/journalhelper/helper
 /
 <$edit-text-plus tiddler="$:/temp/journalfilter" field="Filter Day" placeholder="--" type="number" min="0" max="31" class="inputmonthday" />
 </$reveal>
-
 <$reveal type="match" state="$:/plugins/abraham/edit-text-plus" text="">
 <$edit-text tiddler="$:/temp/journalfilter" field="Filter Year" placeholder="----" type="number" class="inputyear" />
 /
 <$edit-text tiddler="$:/temp/journalfilter" field="Filter Month" placeholder="--" type="number" class="inputmonthday" />
 /
 <$edit-text tiddler="$:/temp/journalfilter" field="Filter Day" placeholder="--" type="number" class="inputmonthday" />
-<$edit-text tiddler="$:/temp/journalfilter" field="Filter Dayname" class="inputmonthday" />
-<$edit-text tiddler="$:/temp/journalfilter" field="Filter Title Content" />
 </$reveal>
+<$edit-text tiddler="$:/temp/journalfilter" field="Filter Dayname" class="inputmonthday" />
+</div>
+<div class="divfitlargeinput">
+<$edit-text tiddler="$:/temp/journalfilter" field="Filter Title Content" class="inputrestofline" />
+</div>
 
 <$set name="dontcare" filter="[tag[Journal]!has[draft.of]] [{$:/temp/journalfilter!!Filter Year}] [{$:/temp/journalfilter!!Filter Month}] [{$:/temp/journalfilter!!Filter Day}] [{$:/temp/journalfilter!!Filter Dayname}] [{$:/temp/journalfilter!!Filter Title Content}]">
 <<journalfilter>>

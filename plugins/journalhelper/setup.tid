@@ -1,3 +1,5 @@
+caption: Journalhelper
+tags: $:/tags/ControlPanel/SettingsTab
 title: $:/plugins/edersasch/journalhelper/setup
 
 <$list filter="[[$:/plugins/edersasch/journalhelper/setup]is[shadow]]" emptyMessage="Please install the plugin to access its setup.">

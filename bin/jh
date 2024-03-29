@@ -16,7 +16,10 @@ case "$CMD" in
 "test")
     "$TWJS" +plugins/tiddlywiki/jasmine --build test
     ;;
-"serve" | "index" | "license")
+"serve")
+    "$TWJS" +plugins/tiddlywiki/tiddlyweb +plugins/tiddlywiki/filesystem --build "$CMD" "$@"
+    ;;
+"index" | "license")
     "$TWJS" --build "$CMD" "$@"
     ;;
 *)
