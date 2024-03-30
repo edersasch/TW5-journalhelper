@@ -14,7 +14,7 @@ shift
 
 case "$CMD" in
 "test")
-    "$TWJS" +plugins/tiddlywiki/jasmine --build test
+    "$TWJS" +plugins/tiddlywiki/tiddlyweb +plugins/tiddlywiki/filesystem +plugins/tiddlywiki/jasmine --build test
     ;;
 "serve")
     "$TWJS" +plugins/tiddlywiki/tiddlyweb +plugins/tiddlywiki/filesystem --build "$CMD" "$@"

@@ -1,5 +1,5 @@
-title: test/journalfilter/filtered
-description: journal date filter fields, overview of journal tiddlers
+title: test/journalfilter/filter_dayname
+description: journal date filter fields, overview of journal tiddlers, filter by dayname
 tags: $:/tags/wiki-test-spec
 type: text/vnd.tiddlywiki-multiple
 
@@ -20,7 +20,7 @@ I'm relaxed
 
 +
 title: filtercontent
-Filter Month: 04
+Filter Dayname: Thu
 
 doesn't matter
 

@@ -1,0 +1,35 @@
+title: test/journalfilter/filter_month
+description: journal date filter fields, overview of journal tiddlers, filter by month
+tags: $:/tags/wiki-test-spec
+type: text/vnd.tiddlywiki-multiple
+
+title: journal1
+tags: Journal
+created: 20240317153543322
+caption: what a day
+
+I'm tired
+
++
+title: journal2
+tags: Journal
+created: 20240418153543322
+caption: what a morning
+
+I'm relaxed
+
++
+title: filtercontent
+Filter Month: 04
+
+doesn't matter
+
++
+title: Output
+
+<<journalfilter tmp:filtercontent>>
+
++
+title: ExpectedResult
+
+<p><div><input class="inputyear" disabled="true" placeholder="2024" type="text" value=""> / <input class="inputmonthday" disabled="true" placeholder="04" type="text" value=""> / <input class="inputmonthday" disabled="true" placeholder="18" type="text" value=""> <input class="inputmonthday" disabled="true" placeholder="Thu" type="text" value=""> <a class="tc-tiddlylink tc-tiddlylink-resolves" href="#journal2"><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">what a morning</span></a></div></p>

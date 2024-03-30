@@ -5,7 +5,8 @@ title: $:/plugins/edersasch/journalhelper/helper
 .inputmonthday {width: 3em; text-align: center;}
 .inputrestofline {width: 100%;}
 .divfloatleft {float: left;}
-.divfitlargeinput {overflow: hidden; padding-left: 0.2em}
+.divfloatright {float: right;}
+.divfitlargeinput {overflow: hidden; padding-left: 0.2em; padding-right: 0.2em}
 </style>
 
 <div class="divfloatleft">
@@ -24,6 +25,12 @@ title: $:/plugins/edersasch/journalhelper/helper
 <$edit-text tiddler="$:/temp/journalfilter" field="Filter Day" placeholder="--" type="number" class="inputmonthday" />
 </$reveal>
 <$edit-text tiddler="$:/temp/journalfilter" field="Filter Dayname" class="inputmonthday" />
+</div>
+<div class="divfloatright">
+<$button>
+{{$:/core/images/erase}}
+<$action-deletetiddler $tiddler="$:/temp/journalfilter" />
+</$button>
 </div>
 <div class="divfitlargeinput">
 <$edit-text tiddler="$:/temp/journalfilter" field="Filter Title Content" class="inputrestofline" />

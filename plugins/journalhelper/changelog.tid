@@ -11,12 +11,13 @@ e.g. "2024.1.Beta1" means that this is the first Beta for the first
 release in the year 2024.
 
 
-! 2024.1.Beta2 - unreleased
+! 2024.1.Beta2 - released 2024-03-30
 
 
 !! Added
 
 * Journal tiddlers can also be filtered by short weekday name and caption / title / text content
+* Filter earse button
 
 
 !! Changed
