@@ -11,6 +11,15 @@ e.g. "2024.1.Beta1" means that this is the first Beta for the first
 release in the year 2024.
 
 
+! 2024.1.Beta3 - unreleased
+
+
+!! Added
+
+* Display number of shown / matching entries
+* Limit maximum number of shown entries, default is 500
+
+
 ! 2024.1.Beta2 - released 2024-03-30
 
 

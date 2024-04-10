@@ -60,6 +60,7 @@ exports.run = function(tmp, filter_year_field, filter_month_field, filter_day_fi
     const matching_list_filter = "[tag[Journal]!has[draft.of]]";
     const journal_tiddlers = this.wiki.filterTiddlers(matching_list_filter);
     let titles = "";
+    let titlesCount = 0;
     for (let i in journal_tiddlers) {
         const journalentry = this.wiki.getTiddler(journal_tiddlers[i]);
         if (journalentry) {
@@ -109,11 +110,40 @@ exports.run = function(tmp, filter_year_field, filter_month_field, filter_day_fi
             }
             if (match) {
                 titles += " [[" + journal_tiddlers[i] + "]]";
+                titlesCount += 1;
             }
         }
     }
-    titles += " +[!sort[created]]";
-    let ret = '<$list filter="""' + titles + '""">';
+    let showMax = 500;
+    const config_showmax_title = "$:/config/journalhelper/showmax";
+    const config_showmax = this.wiki.getTiddler(config_showmax_title);
+    if (config_showmax) {
+        let maxNumber = config_showmax.getFieldString("text") * 1;
+        if (maxNumber >= 0) {
+            showMax = maxNumber === 0 ? titlesCount : maxNumber;
+        }
+    }
+    if (showMax > titlesCount) {
+        showMax = titlesCount;
+    }
+    titles += " +[!sort[created]first[" + showMax + "]]";
+    let ret = '<p>';
+    ret += showMax + " / " + titlesCount + ", max ";
+    ret += '<$let';
+    ret += '  jentries={{{ [tag[Journal]!has[draft.of]count[]] }}}';
+    ret += '  showmaxdefault={{{ [<jentries>compare:number:lteq[500]then[0]else[500]] }}}';
+    ret += '>';
+    ret += '<$select tiddler="' + config_showmax_title + '" default=<<showmaxdefault>> >';
+    ret += '<$list filter="[[1]] [[5]] [[10]] [[20]] [[40]] [[100]] [[500]] [[1000]]">';
+    ret += '<$list filter="[<currentTiddler>compare:number:lt<jentries>]">';
+    ret += '<option><<currentTiddler>></option>';
+    ret += '</$list>';
+    ret += '</$list>';
+    ret += '<option value="0">all <<jentries>></option>';
+    ret += '</$select>';
+    ret += '</$let>';
+    ret += '</p>';
+    ret += '<$list filter="""' + titles + '""">';
     ret += '<div>';
     ret += '<$edit-text field="doesnotexist" placeholder={{{ [{!!created}format:date[YYYY]] }}} disabled="yes" class="inputyear" /> / ';
     ret += '<$edit-text field="doesnotexist" placeholder={{{ [{!!created}format:date[0MM]] }}} disabled="yes" class="inputmonthday" /> / ';

@@ -36,6 +36,6 @@ title: $:/plugins/edersasch/journalhelper/helper
 <$edit-text tiddler="$:/temp/journalfilter" field="Filter Title Content" class="inputrestofline" />
 </div>
 
-<$set name="dontcare" filter="[tag[Journal]!has[draft.of]] [{$:/temp/journalfilter!!Filter Year}] [{$:/temp/journalfilter!!Filter Month}] [{$:/temp/journalfilter!!Filter Day}] [{$:/temp/journalfilter!!Filter Dayname}] [{$:/temp/journalfilter!!Filter Title Content}]">
+<$set name="dontcare" filter="[tag[Journal]!has[draft.of]] [{$:/temp/journalfilter!!Filter Year}] [{$:/temp/journalfilter!!Filter Month}] [{$:/temp/journalfilter!!Filter Day}] [{$:/temp/journalfilter!!Filter Dayname}] [{$:/temp/journalfilter!!Filter Title Content}] [{$:/config/journalhelper/showmax}]">
 <<journalfilter>>
 </$set>
