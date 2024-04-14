@@ -1,0 +1,45 @@
+title: $:/plugins/edersasch/journalhelper/macros
+
+\define journalhelperStyle()
+<style>
+.journalhelperInputyear {width: 4em;text-align: center;}
+.journalhelperInputmonthday {width: 3em; text-align: center;}
+.journalhelperInputrestofline {width: 100%;}
+</style>
+\end
+
+\define showmaxdefault()
+500
+\end
+
+\define journalhelperFilterOutput(titles)
+<$let
+  jentries={{{ [tag[Journal]!has[draft.of]count[]] }}}
+  showmaxtext={{{ [[$:/config/journalhelper/showmax]has[title]then{$:/config/journalhelper/showmax}] }}}
+  showmaxnumber={{{ [<showmaxtext>compare:number:gteq[0]then<showmaxtext>else<showmaxdefault>] }}}
+  showmax={{{ [<showmaxnumber>compare:number:eq[0]then<jentries>else<showmaxnumber>] }}}
+>
+<p>
+<$select tiddler="$:/config/journalhelper/showmax" default=<<showmaxdefault>> >
+<$list filter="[[1]] [[5]] [[10]] [[20]] [[40]] [[100]] [[500]] [[1000]]">
+<$list filter="[<currentTiddler>compare:number:lt<jentries>]">
+<option><<currentTiddler>></option>
+</$list>
+</$list>
+<option value="0">all <<jentries>></option>
+</$select>
+</p>
+<$list filter="$titles$ +[!sort[created]first<showmax>]">
+<div>
+<$edit-text field="doesnotexist" placeholder={{{ [{!!created}format:date[YYYY]] }}} disabled="yes" class="journalhelperInputyear" /> /
+<$edit-text field="doesnotexist" placeholder={{{ [{!!created}format:date[0MM]] }}} disabled="yes" class="journalhelperInputmonthday" /> /
+<$edit-text field="doesnotexist" placeholder={{{ [{!!created}format:date[0DD]] }}} disabled="yes" class="journalhelperInputmonthday" />
+<$edit-text field="doesnotexist" placeholder={{{ [{!!created}format:date[ddd]] }}} disabled="yes" class="journalhelperInputmonthday" />
+<$link to=<<currentTiddler>> >
+<$reveal state="!!caption" type="match" text=""><$view field="title"/></$reveal>
+<$reveal state="!!caption" type="nomatch" text=""><$view field="caption"/></$reveal>
+</$link>
+</div>
+</$list>
+</$let>
+\end
