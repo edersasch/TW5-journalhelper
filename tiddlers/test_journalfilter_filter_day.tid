@@ -27,9 +27,13 @@ doesn't matter
 +
 title: Output
 
+\define journalhelperFilterOutput(titles)
+$titles$
+\end
+
 <<journalfilter tmp:filtercontent>>
 
 +
 title: ExpectedResult
 
-<p><p>1 / 1, max <select value="0"><option>1</option><option value="0">all 2</option></select></p><div><input class="inputyear" disabled="true" placeholder="2024" type="text" value=""> / <input class="inputmonthday" disabled="true" placeholder="04" type="text" value=""> / <input class="inputmonthday" disabled="true" placeholder="18" type="text" value=""> <input class="inputmonthday" disabled="true" placeholder="Thu" type="text" value=""> <a class="tc-tiddlylink tc-tiddlylink-resolves" href="#journal2"><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">what a morning</span></a></div></p>
+<p> <a class="tc-tiddlylink tc-tiddlylink-resolves" href="#journal2">journal2</a></p>

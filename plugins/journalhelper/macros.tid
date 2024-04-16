@@ -9,17 +9,12 @@ title: $:/plugins/edersasch/journalhelper/macros
 </style>
 \end
 
-\define showmaxall()
--1
-\end
-
 \define journalhelperFilterOutput(titles)
 <$let
   jentries={{{ [tag[Journal]!has[draft.of]count[]] }}}
   titlescount={{{ $titles$ +[count[]] }}}
   showmaxtext={{{ [[$:/config/journalhelper/showmax]has[title]then{$:/config/journalhelper/showmax}] }}}
-  showmaxnumber={{{ [<showmaxtext>compare:number:ne[0]then<showmaxtext>else<showmaxall>] }}}
-  showmax={{{ [<showmaxnumber>compare:number:ne[-1]then<showmaxnumber>else<jentries>] }}}
+  showmax={{{ [<showmaxtext>compare:number:gt[0]then<showmaxtext>else<jentries>] }}}
 >
 <p style="text-align: center;">
 [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/filter_alt_FILL1_wght400_GRAD0_opsz24.svg]]
@@ -27,13 +22,13 @@ title: $:/plugins/edersasch/journalhelper/macros
 [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/filter_alt_FILL0_wght400_GRAD0_opsz24.svg]]
 <<jentries>>
 [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.svg]]
-<$select tiddler="$:/config/journalhelper/showmax" default=<<showmaxall>> >
+<$select tiddler="$:/config/journalhelper/showmax" default="0" >
+<option value="0">-</option>
 <$list filter="[[1]] [[5]] [[10]] [[20]] [[40]] [[100]] [[500]] [[1000]]">
 <$list filter="[<currentTiddler>compare:number:lt<jentries>]">
 <option><<currentTiddler>></option>
 </$list>
 </$list>
-<option value=<<showmaxall>> >all <<jentries>></option>
 </$select>
 </p>
 <$list filter="$titles$ +[!sort[created]first<showmax>]">

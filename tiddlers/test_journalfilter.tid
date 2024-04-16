@@ -21,9 +21,13 @@ I'm relaxed
 +
 title: Output
 
+\define journalhelperFilterOutput(titles)
+$titles$
+\end
+
 <<journalfilter>>
 
 +
 title: ExpectedResult
 
-<p><p>2 / 2, max <select value="0"><option>1</option><option value="0">all 2</option></select></p><div><input class="inputyear" disabled="true" placeholder="2024" type="text" value=""> / <input class="inputmonthday" disabled="true" placeholder="04" type="text" value=""> / <input class="inputmonthday" disabled="true" placeholder="18" type="text" value=""> <input class="inputmonthday" disabled="true" placeholder="Thu" type="text" value=""> <a class="tc-tiddlylink tc-tiddlylink-resolves" href="#journal2"><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">what a morning</span></a></div><div><input class="inputyear" disabled="true" placeholder="2024" type="text" value=""> / <input class="inputmonthday" disabled="true" placeholder="03" type="text" value=""> / <input class="inputmonthday" disabled="true" placeholder="17" type="text" value=""> <input class="inputmonthday" disabled="true" placeholder="Sun" type="text" value=""> <a class="tc-tiddlylink tc-tiddlylink-resolves" href="#journal1"><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">what a day</span></a></div></p>
+<p> <a class="tc-tiddlylink tc-tiddlylink-resolves" href="#journal1">journal1</a> <a class="tc-tiddlylink tc-tiddlylink-resolves" href="#journal2">journal2</a></p>

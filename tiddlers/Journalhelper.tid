@@ -1,5 +1,5 @@
 created: 20240317153543322
-modified: 20240415165136956
+modified: 20240415172126296
 tags: 
 title: Journalhelper
 type: text/vnd.tiddlywiki
@@ -17,6 +17,6 @@ Below the filter fields is information what you see:
 
 * The number after the filled filter [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/filter_alt_FILL1_wght400_GRAD0_opsz24.svg]] shows how many entries are left after filtering
 * The number after the empty filter [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/filter_alt_FILL0_wght400_GRAD0_opsz24.svg]] shows the overall number of journal entries
-* The selection after the traffic sign [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.svg]] lets you limit the number of shown entries
+* The selection after the traffic sign [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.svg]] lets you limit the number of shown entries; a minus sign means there is no limit
 
 {{$:/plugins/edersasch/journalhelper/helper}}

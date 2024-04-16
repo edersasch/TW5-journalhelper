@@ -11,13 +11,18 @@ e.g. "2024.1.Beta1" means that this is the first Beta for the first
 release in the year 2024.
 
 
-! 2024.1.Beta3 - unreleased
+! 2024.1.Beta3 - released 2024-04-16
 
 
 !! Added
 
-* Display number of shown / matching entries
-* Limit maximum number of shown entries, default is 500
+* Display number of filtered / overall entries
+* Option to limit maximum number of shown entries, default is unlimited
+
+
+!! Fixed
+
+* Initial filter value and erasing the filter sometimes don't change the result
 
 
 ! 2024.1.Beta2 - released 2024-03-30
