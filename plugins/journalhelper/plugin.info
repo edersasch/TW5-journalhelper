@@ -3,7 +3,7 @@
     "name": "journalhelper",
     "description": "Tools for handling tiddlers tagged with \"Journal\"",
     "author": "edersasch",
-    "version": "2024.1.Beta3",
+    "version": "2024.1.Beta3+1",
     "core-version": ">=5.3.0",
     "source": "https://github.com/edersasch/TW5-journalhelper",
     "plugin-type": "plugin",

@@ -1,5 +1,5 @@
 created: 20240317153543322
-modified: 20240415172126296
+modified: 20240416163928637
 tags: 
 title: Journalhelper
 type: text/vnd.tiddlywiki
@@ -8,15 +8,13 @@ Please install the plugin by drag and drop import:
 
 [[$:/plugins/edersasch/journalhelper]]
 
-Below is an overview of journal tiddlers,  provided by the plugin, that can be filtered by:<br>
+Below is an overview of journal tiddlers, provided by the plugin, that can be filtered by:<br>
 year / month / day / short weekday name / caption and content
 
-The eraser icon at the end of the line lets you clear the filter.
+The eraser icon {{$:/core/images/erase|1.2em}} at the end of the line lets you clear the filter.
 
-Below the filter fields is information what you see:
+Below the filter fields, you see a number showing you how many entries are listed. The filter icon after the number is empty [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/filter_alt_FILL0_wght400_GRAD0_opsz24.svg]] if all entries are shown (no filter set or filter matches all entries) or filled [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/filter_alt_FILL1_wght400_GRAD0_opsz24.svg]] if the result list is filtered.
 
-* The number after the filled filter [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/filter_alt_FILL1_wght400_GRAD0_opsz24.svg]] shows how many entries are left after filtering
-* The number after the empty filter [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/filter_alt_FILL0_wght400_GRAD0_opsz24.svg]] shows the overall number of journal entries
-* The selection after the traffic sign [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.svg]] lets you limit the number of shown entries; a minus sign means there is no limit
+If you see a traffic sign [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.svg]] before the number, you exceeded the maximum number of shown entries. You can click on the sign to change the limit, the minus sign deactivates the limit. If you select a number higher than the number of current entries, the sign will vanish. The limit can always be adjusted in the [[setup|$:/plugins/edersasch/journalhelper/setup]].
 
 {{$:/plugins/edersasch/journalhelper/helper}}

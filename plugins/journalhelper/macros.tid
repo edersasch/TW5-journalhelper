@@ -9,6 +9,15 @@ title: $:/plugins/edersasch/journalhelper/macros
 </style>
 \end
 
+\define journalhelperShowmaxSelect(size:"1")
+<$select tiddler="$:/config/journalhelper/showmax" default="0" size=$size$ >
+<option value="0">-</option>
+<$list filter="[[1]] [[5]] [[10]] [[20]] [[40]] [[100]] [[500]] [[1000]]">
+<option><<currentTiddler>></option>
+</$list>
+</$select>
+\end
+
 \define journalhelperFilterOutput(titles)
 <$let
   jentries={{{ [tag[Journal]!has[draft.of]count[]] }}}
@@ -16,20 +25,24 @@ title: $:/plugins/edersasch/journalhelper/macros
   showmaxtext={{{ [[$:/config/journalhelper/showmax]has[title]then{$:/config/journalhelper/showmax}] }}}
   showmax={{{ [<showmaxtext>compare:number:gt[0]then<showmaxtext>else<jentries>] }}}
 >
+
 <p style="text-align: center;">
-[img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/filter_alt_FILL1_wght400_GRAD0_opsz24.svg]]
-<<titlescount>>
-[img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/filter_alt_FILL0_wght400_GRAD0_opsz24.svg]]
-<<jentries>>
+<$list filter="[<showmax>compare:number:lt<titlescount>]">
+<$button popup="$:/temp/journalhelper/filteroutput/selectshowmax" class="tc-btn-invisible">
 [img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/do_not_disturb_on_FILL0_wght400_GRAD0_opsz24.svg]]
-<$select tiddler="$:/config/journalhelper/showmax" default="0" >
-<option value="0">-</option>
-<$list filter="[[1]] [[5]] [[10]] [[20]] [[40]] [[100]] [[500]] [[1000]]">
-<$list filter="[<currentTiddler>compare:number:lt<jentries>]">
-<option><<currentTiddler>></option>
+</$button>
+<$reveal type="popup" state="$:/temp/journalhelper/filteroutput/selectshowmax">
+<<journalhelperShowmaxSelect "9">>
+</$reveal>
+<<showmax>> /
 </$list>
+<<titlescount>>
+<$list filter="[<jentries>compare:number:eq<titlescount>]">
+[img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/filter_alt_FILL0_wght400_GRAD0_opsz24.svg]]
 </$list>
-</$select>
+<$list filter="[<jentries>compare:number:ne<titlescount>]">
+[img class="journalhelperIcon" [$:/plugins/edersasch/journalhelper/filter_alt_FILL1_wght400_GRAD0_opsz24.svg]]
+</$list>
 </p>
 <$list filter="$titles$ +[!sort[created]first<showmax>]">
 <div>

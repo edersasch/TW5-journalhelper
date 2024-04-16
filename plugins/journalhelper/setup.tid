@@ -2,6 +2,8 @@ caption: Journalhelper
 tags: $:/tags/ControlPanel/SettingsTab
 title: $:/plugins/edersasch/journalhelper/setup
 
+\import [[$:/plugins/edersasch/journalhelper/macros]]
+
 <$list filter="[[$:/plugins/edersasch/journalhelper/setup]is[shadow]]" emptyMessage="Please install the plugin to access its setup.">
 
 To get the overview and filter add the transclusion to a tiddler:<br>
@@ -78,5 +80,7 @@ Please note that this setting applies to all tiddlers, not just those tagged wit
 <$checkbox tiddler="$:/themes/tiddlywiki/vanilla/options/sidebarlayout" field="text" checked="fluid-fixed" unchecked="fixed-fluid" default="fixed-fluid">
 Shrink the sidebar
 </$checkbox>
+
+Select maximum number of visible entries: <<journalhelperShowmaxSelect>>
 
 </$list>
